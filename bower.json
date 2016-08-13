@@ -1,0 +1,26 @@
+{
+  "name": "gulpdemo",
+  "description": "Gulp Demo App",
+  "main": "index.js",
+  "authors": [
+    "Sunil Mane"
+  ],
+  "license": "ISC",
+  "keywords": [
+    "gulp"
+  ],
+  "homepage": "https://github.com/sunil-mane/gulpDemo",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "src/bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "^1.5.8",
+    "bootstrap": "^3.3.7",
+    "angular-ui-router": "^0.3.1",
+    "ngstorage": "^0.3.11"
+  }
+}

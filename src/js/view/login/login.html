@@ -1,0 +1,62 @@
+
+<div class="col-md-4"></div>
+<div class="col-md-4">
+	<form role="form" name="loginForm" novalidate>
+		<div class="login panel panel-primary animated flipInY">
+			<div class="panel-heading">
+				<div class="panel-title">Sign In</div>
+			</div>
+			<div class="panel-body">
+				<div class="form-group">
+					<label for="email">Email address:</label> <input type="email"
+						class="form-control" id="email" name="email"
+						ng-model="loginObj.email" required>
+					<div class="text-danger"
+						ng-if="loginForm.email.$dirty && loginForm.email.$error.required">This
+						field is required</div>
+					<div class="text-danger"
+						ng-if="loginForm.email.$dirty && loginForm.email.$error.email">Please
+						enter valid email</div>
+				</div>
+				<div class="form-group">
+					<label for="pwd">Password:</label> <input type="password"
+						class="form-control" id="pwd" ng-model="loginObj.password"
+						minlength="5" required>
+				</div>
+				<div class="checkbox">
+					<label><input type="checkbox" ng-model="loginObj.remember">Remember
+						me</label>
+				</div>
+			</div>
+
+			<div class="panel-footer">
+				<button type="submit" class="btn btn-default"
+					ng-disabled="loginForm.$invalid" ng-click="login()">Sign
+					In</button>
+			</div>
+		</div>
+	</form>
+</div>
+<div class="col-md-4"></div>
+<script>
+	$(document).ready(function() {
+		var height = $(window).height();
+		var loginBox = $('.login').height();
+		if (height > loginBox)
+			$('.login').css('margin-top', (height - loginBox) / 2);
+		else
+			$('.login').css('margin-top', 0);
+		$(window).on('resize', function() {
+
+			height = $(window).height();
+			loginBox = $('.login').height();
+			console.log(height);
+			console.log('-->' + loginBox);
+			if (height > loginBox)
+				$('.login').css('margin-top', (height - loginBox) / 2);
+			else
+				$('.login').css('margin-top', 0);
+		});
+
+	});
+</script>
