@@ -1,2 +1,7 @@
 /dist/nbproject/private/
 /src/nbproject/private/
+/dist/bower_components
+/dist/nbproject
+/node_modules
+/src/bower_components
+/src/nbproject
