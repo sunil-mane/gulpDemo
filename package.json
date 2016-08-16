@@ -21,9 +21,11 @@
   "homepage": "https://github.com/sunil-mane/gulpDemo#readme",
   "devDependencies": {
     "gulp": "^3.9.1",
+    "gulp-beautify": "^2.0.0",
     "gulp-concat": "^2.6.0",
     "gulp-connect": "^5.0.0",
     "gulp-jshint": "^2.0.1",
+    "gulp-live-server": "0.0.30",
     "gulp-livereload": "^3.8.1",
     "gulp-rename": "^1.2.2",
     "gulp-sourcemap": "^1.0.1",

@@ -5,6 +5,7 @@
 
  (function(){
  	'use strict';
+ 	
  	angular.module('demoApp').factory('userService', [ "$http", function($http){
  		function getUsers(){
  			return $http.get('api/users');
