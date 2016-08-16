@@ -5,8 +5,18 @@ var gulp = require('gulp'),
 	rename = require('gulp-rename'),
 	concat = require('gulp-concat'),
 	uglify = require('gulp-uglify'),
-	jshint = require('gulp-jshint');
+	jshint = require('gulp-jshint'),
+    connect = require('gulp-connect');
 
+
+gulp.task('start', function () {
+  connect.server({
+    name: 'Gulp Demo App',
+    root: 'dist',
+    port: 8001,
+    livereload: true
+  });
+});
 
 gulp.task('process-scripts', function() {
 	return gulp.src('src/app/**/**/*.js')
