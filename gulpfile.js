@@ -6,7 +6,8 @@ var gulp = require('gulp'),
 	concat = require('gulp-concat'),
 	uglify = require('gulp-uglify'),
 	beautify = require('gulp-beautify'),
-    gls = require('gulp-live-server');
+    gls = require('gulp-live-server'),
+    open = require('gulp-open');
 
 
 
@@ -14,6 +15,12 @@ var server = gls.static('dist', 8001);
 
 gulp.task('start', function(){
     server.start();
+    var options = {
+       uri: 'http://localhost:8001/index.html',
+       app: 'chrome'
+    };
+    gulp.src(__filename)
+    .pipe(open(options));
 });
   
 
