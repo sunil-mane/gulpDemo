@@ -2,7 +2,7 @@
 <div class="col-md-4"></div>
 <div class="col-md-4">
 	<form role="form" name="loginForm" novalidate>
-		<div class="login panel panel-primary animated flipInY">
+		<div id="login" class="panel panel-primary animated flipInY">
 			<div class="panel-heading">
 				<div class="panel-title">Sign In</div>
 			</div>
@@ -41,21 +41,26 @@
 <script>
 		$(document).ready(function() {
 		var height = $(window).height();
-		var loginBox = $('.login').height();
-		if (height > loginBox)
-			$('.login').css('margin-top', (height - loginBox) / 2);
-		else
-			$('.login').css('margin-top', 0);
+		var loginBox = $('#login').height();
+		setTimeout(function(){
+			loginBox = $('#login').height();
+			console.log(height);
+			console.log('--->' + loginBox);
+			if (height > loginBox)
+				$('#login').css('margin-top', (height - loginBox) / 2);
+			else
+				$('#login').css('margin-top', 0);
+		}, 100);
 		$(window).on('resize', function() {
 
 			height = $(window).height();
-			loginBox = $('.login').height();
+			loginBox = $('#login').height();
 			console.log(height);
 			console.log('-->' + loginBox);
 			if (height > loginBox)
-				$('.login').css('margin-top', (height - loginBox) / 2);
+				$('#login').css('margin-top', (height - loginBox) / 2);
 			else
-				$('.login').css('margin-top', 0);
+				$('#login').css('margin-top', 0);
 		});
 
 	});

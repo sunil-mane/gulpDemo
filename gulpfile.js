@@ -6,7 +6,8 @@ var gulp = require('gulp'),
 	concat = require('gulp-concat'),
 	uglify = require('gulp-uglify'),
 	jshint = require('gulp-jshint'),
-    connect = require('gulp-connect');
+    connect = require('gulp-connect'),
+    livereload = require('gulp-livereload');
 
 
 gulp.task('start', function () {
@@ -31,6 +32,7 @@ gulp.task('process-scripts', function() {
 gulp.task('process-styles', function() {
 	return gulp.src('src/css/*.css')
 	.pipe(gulp.dest('dist/css/'))
+    .pipe(livereload())
 });
 
 gulp.task('process-libs', function(){
@@ -41,16 +43,18 @@ gulp.task('process-libs', function(){
 gulp.task('process-html', function(){
 	return gulp.src('src/**/**/*.html')
 	.pipe(gulp.dest('dist/'))
+    .pipe(livereload())
 });
 
 // configure the jshint task
 gulp.task('jshint', function() {
   return gulp.src('src/app/**/**/*.js')
     .pipe(jshint())
-    .pipe(jshint.reporter('jshint-stylish'));
+    .pipe(jshint.reporter('jshint-stylish'))
+    .pipe(livereload())
 });
 
-gulp.task('build', ['process-scripts', 'process-styles', 'process-libs', 'process-html'], function(){
+gulp.task('build', ['watch', 'start', 'process-scripts', 'process-styles', 'process-libs', 'process-html'], function(){
 	console.log("Build successfull.");
 });
 
@@ -65,6 +69,6 @@ gulp.task("watch", function(){
 
 
 // define the default task and add the watch task to it
-gulp.task('default', ["watch"], function() {
+gulp.task('default', ["build"], function() {
 	console.log("I have configured a gulpfile");
 });
