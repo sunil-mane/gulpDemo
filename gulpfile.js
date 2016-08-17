@@ -7,7 +7,9 @@ var gulp = require('gulp'),
 	uglify = require('gulp-uglify'),
 	beautify = require('gulp-beautify'),
     gls = require('gulp-live-server'),
-    open = require('gulp-open');
+    open = require('gulp-open'),
+    del = require('del'),
+    ts = require('gulp-typescript');
 
 
 
@@ -69,4 +71,18 @@ gulp.task('build', ['process-scripts', 'process-styles', 'process-libs', 'proces
 // define the default task and add the watch task to it
 gulp.task('default', ["build"], function() {
 	console.log("I have configured a gulpfile");
+});
+
+gulp.task('clean', function() {
+  // You can use multiple globbing patterns as you would with `gulp.src` 
+  return del(['dist']);
+});
+
+gulp.task('ts', function() {
+    return gulp.src('src/app/**/**/*.ts')
+    .pipe(ts({
+        noImplicitAny: true
+    }))
+    .pipe(gulp.dest('dist/js/'))
+    
 });
