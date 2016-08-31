@@ -61,6 +61,9 @@ gulp.task("watch", function(){
     gulp.watch('src/**/**/*.html', ['process-html']);
 
     gulp.watch('src/css/*.css', ['process-styles']);
+
+    gulp.watch('src/app/**/**/*.ts', ['ts']);
+
 });
 
 gulp.task('build', ['process-scripts', 'process-styles', 'process-libs', 'process-html'], function(){

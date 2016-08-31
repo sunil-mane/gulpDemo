@@ -1,15 +1,4 @@
-class Employee {
+export function hello(compiler: string) {
+    console.log(`Hello from ${compiler}`);
+}
 
-	
-
-    constructor(public name: string) { 
-    	
-    }
-    getName() {
-        return this.name;
-    }
-};
-
-var emp = new Employee("Sunil");
-    
-console.log(emp.getName());
