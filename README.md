@@ -1,7 +1,7 @@
 # gulpDemo
 Gulp Demo App
 
-Please instal git, node, npm
+Please install git, node, npm
 
 Download the app using below url
 git clone https://github.com/sunil-mane/gulpDemo.git
