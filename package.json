@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/sunil-mane/gulpDemo#readme",
   "devDependencies": {
+    "angular-mocks": "^1.5.8",
     "del": "^2.2.2",
     "gulp": "^3.9.1",
     "gulp-beautify": "^2.0.0",
