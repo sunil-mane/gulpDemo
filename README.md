@@ -1,4 +1,4 @@
-# gulpDemo
+# Gulp Demo
 Gulp Demo App
 
 Please install git, node, npm
