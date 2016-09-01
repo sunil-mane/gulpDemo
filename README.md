@@ -1,13 +1,19 @@
 # gulpDemo
 Gulp Demo App
 
+Please instal git, node, npm
 
-npm install
+Download the app using below url
+git clone https://github.com/sunil-mane/gulpDemo.git
 
-bower install
+Run below commands to build and run the app
 
-gulp build
-
-gulp start
+  npm install
+  
+  bower install
+  
+  gulp build
+  
+  gulp start
 
 http://localhost:8001/index.html
