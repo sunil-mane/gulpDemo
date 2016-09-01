@@ -3,7 +3,7 @@ Gulp Demo App
 
 Please install git, node, npm
 
-Download the app using below url
+Download the app using below git command : 
 git clone https://github.com/sunil-mane/gulpDemo.git
 
 Run below commands to build and run the app
