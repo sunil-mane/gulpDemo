@@ -6,7 +6,8 @@
  (function(){
  	'use strict';
  	
- 	angular.module('demoApp',[
+ 	angular
+ 		.module('demoApp',[
  		'ui.router',
  		'ngStorage'
  		]);

@@ -6,7 +6,9 @@
  (function(){
     'use strict';
     
-    angular.module('demoApp').config([ "$stateProvider", "$urlRouterProvider", function ($stateProvider, $urlRouterProvider) {
+    angular
+        .module('demoApp')
+        .config([ "$stateProvider", "$urlRouterProvider", function ($stateProvider, $urlRouterProvider) {
         //
         // For any unmatched url, redirect to /state1
         $urlRouterProvider.otherwise("/login");

@@ -6,13 +6,19 @@
  (function(){
  	'use strict';
  	
- 	angular.module('demoApp').factory('userService', [ "$http", function($http){
- 		function getUsers(){
- 			return $http.get('api/users');
- 		}
- 		return {
- 			getUsers : getUsers
- 		};
- 	}]);
+ 	angular
+ 		.module('demoApp')
+ 		.factory('userService', userService); 
+
+ 		userService.$inject = [ "$http"];
+
+ 		function userService($http){
+	 		function getUsers(){
+	 			return $http.get('api/users');
+	 		}
+	 		return {
+	 			getUsers : getUsers
+	 		};
+	 	};
  })();
  

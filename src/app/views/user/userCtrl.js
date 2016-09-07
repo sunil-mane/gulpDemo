@@ -6,16 +6,22 @@
  (function(){
  	'use strict';
  	
- 	angular.module('demoApp').controller('userCtrl', ['$scope', 'userService', function($scope, userService){
+ 	angular
+ 		.module('demoApp')
+ 		.controller('userCtrl', userCtrl);
 
- 		userService.getUsers().then(function(response){
- 			$scope.users = response.data;
+ 		userCtrl.$inject = ['$scope', 'userService']
 
- 		}).catch(function(response){
- 			console.log('Error : ' + response);
- 		});
+ 		function userCtrl($scope, userService){
 
- 	}]);
+	 		userService.getUsers().then(function(response){
+	 			$scope.users = response.data;
+
+	 		}).catch(function(response){
+	 			console.log('Error : ' + response);
+	 		});
+
+	 	};
 
  })();
 

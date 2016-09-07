@@ -6,10 +6,11 @@
 (function() {
     'use strict';
 
-    angular.module('demoApp', [
-        'ui.router',
-        'ngStorage'
-    ]);
+    angular
+        .module('demoApp', [
+            'ui.router',
+            'ngStorage'
+        ]);
 })();
 
 /**
@@ -20,16 +21,19 @@
 (function() {
     'use strict';
 
-    angular.module('demoApp').run(["$rootScope", "$state", "loginService", function($rootScope, $state, loginService) {
-        $rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams) {
-            if (toState.authenticate && !loginService.isLogedin()) {
-                $state.go('login');
-                event.preventDefault();
-                // transitionTo() promise will be rejected with 
-                // a 'transition prevented' error
-            }
-        });
-    }]);
+    angular
+        .module('demoApp')
+        .run(["$rootScope", "$state", "loginService", function($rootScope, $state, loginService) {
+
+            $rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams) {
+                if (toState.authenticate && !loginService.isLogedin()) {
+                    $state.go('login');
+                    event.preventDefault();
+                    // transitionTo() promise will be rejected with 
+                    // a 'transition prevented' error
+                }
+            });
+        }]);
 
 })();
 
@@ -41,54 +45,56 @@
 (function() {
     'use strict';
 
-    angular.module('demoApp').config(["$stateProvider", "$urlRouterProvider", function($stateProvider, $urlRouterProvider) {
-        //
-        // For any unmatched url, redirect to /state1
-        $urlRouterProvider.otherwise("/login");
-        //
-        // Now set up the states
-        $stateProvider
-            .state('login', {
-                authenticate: false,
-                url: "/login",
-                templateUrl: "app/views/login/login.html",
-                controller: 'loginCtrl'
-            })
-            .state('home', {
-                authenticate: true,
-                url: "/home",
-                templateUrl: "app/views/home/home.html",
-                controller: 'homeCtrl'
-            })
-            .state('home.customers', {
-                authenticate: true,
-                url: "/customers",
-                templateUrl: "app/views/customer/customers.html",
-                controller: 'customerCtrl'
-            })
-            .state('home.users', {
-                authenticate: true,
-                url: "/users",
-                templateUrl: "app/views/user/users.html",
-                controller: 'userCtrl'
-            })
-            .state('home.products', {
-                authenticate: true,
-                url: "/products",
-                templateUrl: "app/views/product/products.html",
-                controller: 'productCtrl'
-            })
-            .state('logout', {
-                authenticate: false,
-                url: '/logout',
-                controller: ["$state", "loginService", function($state, loginService) {
-                    if (loginService.logout()) {
-                        $state.go('login');
-                    }
+    angular
+        .module('demoApp')
+        .config(["$stateProvider", "$urlRouterProvider", function($stateProvider, $urlRouterProvider) {
+            //
+            // For any unmatched url, redirect to /state1
+            $urlRouterProvider.otherwise("/login");
+            //
+            // Now set up the states
+            $stateProvider
+                .state('login', {
+                    authenticate: false,
+                    url: "/login",
+                    templateUrl: "app/views/login/login.html",
+                    controller: 'loginCtrl'
+                })
+                .state('home', {
+                    authenticate: true,
+                    url: "/home",
+                    templateUrl: "app/views/home/home.html",
+                    controller: 'homeCtrl'
+                })
+                .state('home.customers', {
+                    authenticate: true,
+                    url: "/customers",
+                    templateUrl: "app/views/customer/customers.html",
+                    controller: 'customerCtrl'
+                })
+                .state('home.users', {
+                    authenticate: true,
+                    url: "/users",
+                    templateUrl: "app/views/user/users.html",
+                    controller: 'userCtrl'
+                })
+                .state('home.products', {
+                    authenticate: true,
+                    url: "/products",
+                    templateUrl: "app/views/product/products.html",
+                    controller: 'productCtrl'
+                })
+                .state('logout', {
+                    authenticate: false,
+                    url: '/logout',
+                    controller: ["$state", "loginService", function($state, loginService) {
+                        if (loginService.logout()) {
+                            $state.go('login');
+                        }
 
-                }]
-            });
-    }]);
+                    }]
+                });
+        }]);
 
 })();
 
@@ -101,13 +107,19 @@
 (function() {
     'use strict';
 
-    angular.module('demoApp').factory('customerService', ["$http", function($http) {
+    angular
+        .module('demoApp')
+        .factory('customerService', customerService);
+
+    customerService.$inject = ["$http"];
+
+    function customerService($http) {
         return {
             getCustomers: function() {
                 return $http.get('http://www.w3schools.com/angular/customers.php');
             }
         };
-    }]);
+    };
 
 })();
 
@@ -119,7 +131,13 @@
 (function() {
     'use strict';
 
-    angular.module('demoApp').factory('loginService', ["$localStorage", "$sessionStorage", function($localStorage, $sessionStorage) {
+    angular
+        .module('demoApp')
+        .factory('loginService', loginService);
+
+    loginService.$inject = ["$localStorage", "$sessionStorage"];
+
+    function loginService($localStorage, $sessionStorage) {
         return {
             login: function(loginObj) {
                 if (loginObj.remember) {
@@ -161,7 +179,7 @@
                     return "Guest";
             }
         };
-    }]);
+    };
 
 })();
 
@@ -174,14 +192,20 @@
 (function() {
     'use strict';
 
-    angular.module('demoApp').factory('userService', ["$http", function($http) {
+    angular
+        .module('demoApp')
+        .factory('userService', userService);
+
+    userService.$inject = ["$http"];
+
+    function userService($http) {
         function getUsers() {
             return $http.get('api/users');
         }
         return {
             getUsers: getUsers
         };
-    }]);
+    };
 })();
 
 /**
@@ -214,9 +238,15 @@
 (function() {
     'use strict';
 
-    angular.module('demoApp').controller('homeCtrl', ["$scope", "loginService", function($scope, loginService) {
+    angular
+        .module('demoApp')
+        .controller('homeCtrl', homeCtrl);
+
+    homeCtrl.$inject = ["$scope", "loginService"]
+
+    function homeCtrl($scope, loginService) {
         $scope.user = loginService.getUserEmail();
-    }]);
+    };
 
 })();
 
@@ -252,9 +282,15 @@
 (function() {
     'use strict';
 
-    angular.module('demoApp').controller('productCtrl', ["$scope", "loginService", function($scope, loginService) {
+    angular
+        .module('demoApp')
+        .controller('productCtrl', productCtrl);
 
-    }]);
+    productCtrl.$inject = ["$scope", "loginService"];
+
+    function productCtrl($scope, loginService) {
+
+    };
 
 })();
 
@@ -268,7 +304,13 @@
 (function() {
     'use strict';
 
-    angular.module('demoApp').controller('userCtrl', ['$scope', 'userService', function($scope, userService) {
+    angular
+        .module('demoApp')
+        .controller('userCtrl', userCtrl);
+
+    userCtrl.$inject = ['$scope', 'userService']
+
+    function userCtrl($scope, userService) {
 
         userService.getUsers().then(function(response) {
             $scope.users = response.data;
@@ -277,6 +319,6 @@
             console.log('Error : ' + response);
         });
 
-    }]);
+    };
 
 })();
