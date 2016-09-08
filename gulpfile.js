@@ -9,7 +9,8 @@ var gulp = require('gulp'),
     gls = require('gulp-live-server'),
     open = require('gulp-open'),
     del = require('del'),
-    ts = require('gulp-typescript');
+    ts = require('gulp-typescript'),
+    webserver = require('gulp-webserver');
 
 
 
@@ -88,4 +89,13 @@ gulp.task('ts', function() {
     }))
     .pipe(gulp.dest('dist/js/'))
     
+});
+
+gulp.task('webserver', ['watch','build'], function() {  
+    gulp.src('.')
+        .pipe(webserver({
+            livereload: false,
+            directoryListing: true,
+            open: "http://localhost:8000/dist/index.html"
+        }));
 });
