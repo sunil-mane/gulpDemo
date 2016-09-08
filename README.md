@@ -1,7 +1,7 @@
 # Gulp Demo
-#Gulp Demo App
+Gulp Demo App
 
-#Please install git, node, npm
+Please install git, node, npm
 
 #Download the app using below git command :
 
